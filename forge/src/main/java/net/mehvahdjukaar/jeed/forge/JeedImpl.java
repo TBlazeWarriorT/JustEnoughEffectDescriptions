@@ -51,6 +51,7 @@ public class JeedImpl {
     private static ForgeConfigSpec.BooleanValue ingredientsList;
     private static ForgeConfigSpec.BooleanValue effectColor;
     private static ForgeConfigSpec.ConfigValue<List<? extends String>> hiddenEffects;
+    private static ForgeConfigSpec.BooleanValue displayOnBeacons;
 
     private static final DeferredRegister<RecipeSerializer<?>> RECIPES_SERIALIZERS = DeferredRegister.create(
             ForgeRegistries.RECIPE_SERIALIZERS, Jeed.MOD_ID);
@@ -83,6 +84,8 @@ public class JeedImpl {
                 .define("render_slots", false);
         suppressVanillaTooltips = builder.comment("Removes vanilla tooltips rendered when an effect renders small (square box)")
                 .define("replace_vanilla_tooltips", true);
+        displayOnBeacons = builder.comment("Modify beacon tooltips")
+                .define("display_on_beacons", true);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, builder.build());
     }
 
